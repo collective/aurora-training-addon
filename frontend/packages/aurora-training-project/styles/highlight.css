@@ -1,0 +1,59 @@
+/*
+  Shared styles for the Highlight block (both public view and editor).
+
+  The framework puts `--highlight-bg` (from the `backgroundColor` style field)
+  and `--block-width` (from the `blockWidth` style field) on the outer
+  `.block.block-highlight` element. This block only consumes them.
+*/
+
+.block-highlight .highlight-inner {
+  box-sizing: border-box;
+  /* Fill the block's inner container. The container controls the max-width
+     (from the `blockWidth` style field); without this the content would shrink
+     to fit its text in the public view. */
+  width: 100%;
+  background: var(--highlight-bg, transparent);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+}
+
+.block-highlight .highlight-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.block-highlight .highlight-body {
+  margin: 0;
+  white-space: pre-line; /* keep line breaks typed in the textarea */
+}
+
+/* Inline editing controls on the canvas. They inherit the block background so
+   the editor preview matches the final rendering. */
+.block-highlight .highlight-inner--edit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.block-highlight .highlight-title--edit,
+.block-highlight .highlight-body--edit {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  resize: vertical;
+}
+
+.block-highlight .highlight-title--edit {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.block-highlight .highlight-title--edit:focus,
+.block-highlight .highlight-body--edit:focus {
+  outline: 2px solid var(--quanta-azure, #0b5fff);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
