@@ -19,8 +19,8 @@ They live in `tests/` and are configured through
   API (equivalent to `cy.createContent`).
 - `tests/accessibility.ts` — `expectNoAccessibilityViolations(page, ...)`, an
   axe-core based accessibility assertion.
-- `tests/*.test.ts` — the tests themselves (homepage, content, and the add-on's
-  `Likes` feature).
+- `tests/*.test.ts` — the tests themselves (homepage, content, the add-on's
+  `Likes` feature, and the `Highlight` block).
 
 ## The Likes feature and Prisma
 
