@@ -14,24 +14,26 @@
 
 .highlight-color-widget .highlight-color-swatch {
   border-radius: 8px;
-  outline: none;
   cursor: pointer;
+  outline: none;
 }
 
 .highlight-color-widget .highlight-color-swatch .react-aria-ColorSwatch {
   width: 28px;
   height: 28px;
-  border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
 }
 
-.highlight-color-widget .highlight-color-swatch[data-selected]
+.highlight-color-widget
+  .highlight-color-swatch[data-selected]
   .react-aria-ColorSwatch {
   outline: 2px solid var(--quanta-azure, #0b5fff);
   outline-offset: 2px;
 }
 
-.highlight-color-widget .highlight-color-swatch[data-focus-visible]
+.highlight-color-widget
+  .highlight-color-swatch[data-focus-visible]
   .react-aria-ColorSwatch {
   outline: 2px solid var(--quanta-azure, #0b5fff);
   outline-offset: 2px;

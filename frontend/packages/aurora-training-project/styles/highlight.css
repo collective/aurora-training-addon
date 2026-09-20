@@ -7,14 +7,14 @@
 */
 
 .block-highlight .highlight-inner {
-  box-sizing: border-box;
   /* Fill the block's inner container. The container controls the max-width
      (from the `blockWidth` style field); without this the content would shrink
      to fit its text in the public view. */
   width: 100%;
-  background: var(--highlight-bg, transparent);
-  border-radius: 12px;
+  box-sizing: border-box;
   padding: 1.5rem 1.75rem;
+  border-radius: 12px;
+  background: var(--highlight-bg, transparent);
 }
 
 .block-highlight .highlight-title {
@@ -53,7 +53,7 @@
 
 .block-highlight .highlight-title--edit:focus,
 .block-highlight .highlight-body--edit:focus {
+  border-radius: 6px;
   outline: 2px solid var(--quanta-azure, #0b5fff);
   outline-offset: 2px;
-  border-radius: 6px;
 }
