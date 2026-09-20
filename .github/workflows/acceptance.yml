@@ -28,7 +28,7 @@ jobs:
         run: npm i -g corepack@latest && corepack enable
 
       - name: Set up uv
-        uses: astral-sh/setup-uv@v6
+        uses: astral-sh/setup-uv@v7
         with:
           # The acceptance backend runs as a long-lived `uv run robot-server`
           # process that holds a lock on uv's cache for its whole lifetime.
