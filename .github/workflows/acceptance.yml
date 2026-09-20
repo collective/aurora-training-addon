@@ -63,7 +63,7 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps chromium
 
-      - uses: JarvusInnovations/background-action@v1.0.7
+      - uses: JarvusInnovations/background-action@v2.0.0
         name: Start servers - Aurora frontend and Plone (acceptance)
         with:
           run: |
