@@ -8,11 +8,22 @@ Plone Aurora training project with a Python CMFPlone backend.
 
 ## What this project demonstrates 🎓
 
-Beyond the standard monorepo scaffold, this training project ships a small
-**"Likes"** feature in the frontend add-on
+Beyond the standard monorepo scaffold, this training project ships a couple of
+examples in the frontend add-on
 ([`frontend/packages/aurora-training-project`](frontend/packages/aurora-training-project))
-that showcases several Aurora extension points — and how to plug an **extra
-backend** (a Prisma/SQLite database) into an Aurora app alongside Plone.
+that exercise different Aurora extension points:
+
+- **The Likes feature** — a slot component, a server-side `rootLoaderData`
+  utility, a resource route, and an **extra backend** (a Prisma/SQLite database)
+  plugged into an Aurora app alongside Plone.
+- **The Highlight block** — a registry ("Plone") block that demonstrates the
+  block anatomy, a schema-driven settings form, block width, and a custom
+  background-color **style field** with a React Aria color-swatch widget.
+
+Both features are covered by Playwright acceptance tests under
+[`frontend/acceptance`](frontend/acceptance).
+
+### The Likes feature 👍
 
 Every page shows a 👍 **Like** button with the number of times that URL has been
 liked; clicking it increments the count in place. Under the hood it wires
@@ -36,12 +47,45 @@ together:
   ([`prisma/schema.prisma`](frontend/packages/aurora-training-project/prisma/schema.prisma),
   [`lib/prisma.ts`](frontend/packages/aurora-training-project/lib/prisma.ts)).
 
-The feature is covered by Playwright acceptance tests under
-[`frontend/acceptance`](frontend/acceptance).
+The Likes acceptance tests live in
+[`frontend/acceptance/tests/likes.test.ts`](frontend/acceptance/tests/likes.test.ts).
 
 > [!NOTE]
 > The Likes data lives in a local SQLite database. See the **Set up the Likes
 > database (Prisma)** section below for the one-time setup.
+
+### The Highlight block 🎨
+
+A registry ("Plone") block that highlights a short message. It is a compact tour
+of how a block is built and styled in Aurora
+([`blocks/Highlight`](frontend/packages/aurora-training-project/blocks/Highlight)):
+
+- **Block registration** — the block config (`view`, `edit`, `blockSchema`,
+  icon, category) is registered into `config.blocks.blocksConfig`
+  ([`blocks/Highlight/index.ts`](frontend/packages/aurora-training-project/blocks/Highlight/index.ts),
+  [`config/blocks.ts`](frontend/packages/aurora-training-project/config/blocks.ts)).
+- **Inline editing vs. settings form** — the title and body are edited inline on
+  the canvas, while the styling controls live in the schema-driven settings form
+  ([`blocks/Highlight/HighlightBlockEdit.tsx`](frontend/packages/aurora-training-project/blocks/Highlight/HighlightBlockEdit.tsx),
+  [`blocks/Highlight/schema.tsx`](frontend/packages/aurora-training-project/blocks/Highlight/schema.tsx)).
+- **Block width** — exposed through the shared `blockWidth` style field
+  (`widget: 'width'`, `styleField: true`); the block content fills the selected
+  width in the public view
+  ([`styles/highlight.css`](frontend/packages/aurora-training-project/styles/highlight.css)).
+- **A custom style field** — `backgroundColor` is a project-defined style field.
+  A `styleFieldDefinition` maps the stored id (for example `amber`) to a
+  `--highlight-bg` CSS custom property, and a custom settings widget built on
+  React Aria's `ColorSwatchPicker` picks the value
+  ([`config/blocks.ts`](frontend/packages/aurora-training-project/config/blocks.ts),
+  [`blocks/Highlight/HighlightColorWidget.tsx`](frontend/packages/aurora-training-project/blocks/Highlight/HighlightColorWidget.tsx),
+  [`blocks/Highlight/palette.ts`](frontend/packages/aurora-training-project/blocks/Highlight/palette.ts)).
+- **Add-on styles** — view and editor styles are loaded through the add-on
+  `styles/publicui.css` and `styles/cmsui.css` convention
+  ([`styles/publicui.css`](frontend/packages/aurora-training-project/styles/publicui.css),
+  [`styles/cmsui.css`](frontend/packages/aurora-training-project/styles/cmsui.css)).
+
+The Highlight acceptance tests live in
+[`frontend/acceptance/tests/highlight.test.ts`](frontend/acceptance/tests/highlight.test.ts).
 
 ## Quick Start 🏁
 

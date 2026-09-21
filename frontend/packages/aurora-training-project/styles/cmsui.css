@@ -1,0 +1,40 @@
+/* CMS UI (editor) Styles */
+
+/* The block itself renders the same in edit mode. */
+@import './highlight.css';
+
+/* The custom background-color swatch widget shown in the block settings form.
+   React Aria Components are unstyled by default, so we provide the layout and
+   selection affordances here. */
+.highlight-color-widget {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.highlight-color-widget .highlight-color-swatch {
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+.highlight-color-widget .highlight-color-swatch .react-aria-ColorSwatch {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+}
+
+.highlight-color-widget
+  .highlight-color-swatch[data-selected]
+  .react-aria-ColorSwatch {
+  outline: 2px solid var(--quanta-azure, #0b5fff);
+  outline-offset: 2px;
+}
+
+.highlight-color-widget
+  .highlight-color-swatch[data-focus-visible]
+  .react-aria-ColorSwatch {
+  outline: 2px solid var(--quanta-azure, #0b5fff);
+  outline-offset: 2px;
+}
